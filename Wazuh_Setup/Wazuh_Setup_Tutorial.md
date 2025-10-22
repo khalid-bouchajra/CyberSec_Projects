@@ -1,9 +1,9 @@
-# Wazuh Setup and File Integrity Monitoring (FIM) Demo
+# Wazuh Setup Tutorial
 
 ## Introduction
 
 In this guide, we’ll set up **Wazuh** — an open-source **SIEM** and **XDR** platform used to monitor systems and detect security events.  
-We’ll also test a **File Integrity Monitoring (FIM)** feature to see how Wazuh detects and reports file changes in real time.
+We’ll also do a quick test at the end on **File Integrity Monitoring (FIM)** demo to see how Wazuh detects and reports file changes in real time.
 
 ---
 
@@ -14,14 +14,12 @@ We’ll also test a **File Integrity Monitoring (FIM)** feature to see how Wazuh
 
 Together, they give visibility into your entire infrastructure and help identify security issues quickly.
 
----
-
 ## Objective
 
 We’ll perform the following steps:
 
-1. **Install the Wazuh Manager** on **Ubuntu 24.04** (running inside a virtual machine).  
-2. **Install the Wazuh Agent** on a **Windows 11** machine to send logs to the server.
+1. **Install the Wazuh Manager** on **Ubuntu 24.04 LTS** (running inside a virtual machine).  
+2. **Install the Wazuh Agent** on a **Windows 11 Pro** machine to send logs to the server.
 
 That’s it — a simple setup that gives you powerful monitoring capabilities.
 
@@ -35,17 +33,13 @@ Before starting, make sure your computer meets the requirements for this setup.
 - **RAM:** 8 GB or more  
 - **Virtualization:** Must be enabled in your BIOS or UEFI settings  
 
-Virtualization allows your computer to run virtual machines efficiently. Most modern systems support it — it just needs to be turned on.
+Virtualization allows your computer to run virtual machines efficiently. Most modern systems support it — it just needs to be turned on if not already on.
 
----
-
-### How to Check Your RAM
+### How to Check Your RAM?
 1. Press **Windows + R**, type `msinfo32`, and press **Enter**.  
 2. Look for **Installed Physical Memory (RAM)** to see your total memory.
 
----
-
-### How to Check Virtualization
+### How to Check Virtualization?
 1. Press **Ctrl + Shift + Esc** to open **Task Manager**.  
 2. Go to the **Performance** tab and select **CPU**.  
 3. Look at the bottom-right corner — it should say **Virtualization: Enabled**.
@@ -58,41 +52,32 @@ Once your computer is ready, proceed to the next step to begin the setup.
 
 ---
 
-## Step 2: Install VirtualBox and Download Ubuntu 24.04 ISO
+## Step 2: Install VirtualBox and Download Ubuntu 24.04 LTS ISO
 
-Now that your computer is ready, it is time to set up the lab environment.  
-We will use **VirtualBox** to create and run our Ubuntu virtual machine.  
-It is free, easy to use, and does not require any registration or payment.
+Now that your computer is ready, it’s time to set up the lab environment.
+We’ll use **VirtualBox** to create and run our Ubuntu virtual machine.
+It’s free, easy to use, and doesn’t require any registration or payment.
 
-If you already have **VMware** or another virtualization tool, you can use that instead.
+If you already have **VMware**, you can use that instead — it's even better.
 
----
+### What Is a Hypervisor (like Hyper-V)?
+A **hypervisor** (for example, **Hyper-V**, **VirtualBox**, or **VMware**) allows you to run multiple operating systems on a single computer.
+It does this by creating isolated virtual environments that share your computer’s hardware resources. 
 
-### What Is Virtualization
-Virtualization allows you to run multiple operating systems on a single computer.  
-It works by creating isolated virtual environments that share your hardware resources.  
-If you are new to the concept, you can find many beginner-friendly explanations online.
-
----
-
-### Download VirtualBox
+### Download VirtualBox:
 Download the latest version of VirtualBox from the official website:  
 [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+Install it by running the setup file and following the instructions.
 
-After installation, open VirtualBox and keep it ready for the next steps.
-
----
-
-### Download Ubuntu 24.04 LTS ISO
+### Download Ubuntu 24.04 LTS ISO:
 Next, download the Ubuntu 24.04 LTS ISO file, which acts as the installation media for the virtual machine.
 
 You can download it from the official Ubuntu website:  
 [https://ubuntu.com/download/desktop](https://ubuntu.com/download/desktop)
 
 Save the ISO file in a dedicated folder for your virtual machines.  
-Keeping all your ISO files organized will help you manage multiple projects more efficiently.
 
-Once both files are ready, proceed to the next step to begin creating your virtual machine.
+Once both are ready, proceed to the next step to begin creating your virtual machine.
 
 ---
 
@@ -100,27 +85,30 @@ Once both files are ready, proceed to the next step to begin creating your virtu
 
 ### a. Fix the Network First
 
-This step is important to ensure your virtual machine (VM) connects properly to your local network.
+This step is crucial to ensure your virtual machine (VM) connects properly to your local network.
 
 When you configure the VM in **Bridged Mode**, it will use your real network adapter, allowing the VM and your computer to be on the same network.  
 This setup makes it easier for them to communicate with each other.
 
 If this configuration is skipped, the VM may receive an IP address from a different subnet, preventing proper communication between devices.
 
----
-
-### How to Configure the Bridged Network
+### How to Configure the Bridged Network?
 
 1. Open the **Start Menu**, search for **Virtual Network Editor**, and run it as **Administrator**.  
 2. If you are connected through Wi-Fi, select **VMnet0**.  
 3. Under **VMnet Information**, locate **Bridged to** and choose your **wireless adapter**.  
 4. Click **Apply**, then **OK** to save the
 
----
+### How to Find Your Wireless Adapter Name?
 
-### b. Build Your First Virtual Machine
+There are several ways to check it:
 
-Now that your network is ready, it’s time to create your first virtual machine.
+- Open **System Information → Components → Network → Adapter**  
+- Or open **Device Manager**, then expand **Network adapters** to see the list
+
+### b. Build Your Virtual Machine
+
+Now that your network is ready, it’s time to create your virtual machine.
 
 1. Open **VirtualBox**.  
 2. Click **Machine → New** at the top.
@@ -128,14 +116,14 @@ Now that your network is ready, it’s time to create your first virtual machine
 #### Basic Setup
 
 1. **Name:** Choose a name for your VM.
-2. **Folder:** Select a clean folder to store your VM files — avoid using the Downloads folder.  
-3. **ISO File:** In the “Name and Operating System” section, choose the **Ubuntu 24.04 ISO** you downloaded earlier.
+2. **Folder:** Select a clean folder to store your VM files — avoid using used folders like Downloads.  
+3. **ISO File:** In the “Name and Operating System” section, choose the **Ubuntu 24.04 LTS ISO** you downloaded earlier.
 
 #### Unattended Guest OS Installation
 
 During this step:
 - Set a **password** and confirm it.  
-- You can also change the **username** if desired.  
+- You can also change the **username** if you want.  
 Keep these credentials safe — you’ll need them to log in later.
 
 #### Hardware Configuration
@@ -144,13 +132,13 @@ Let’s allocate the necessary resources:
 
 - **Base Memory (RAM):** 4 GB  
 - **CPUs:** 2 cores  
-- **Storage:** Create a new virtual hard disk (recommended size: **60 GB**)
+- **Storage:** Create a new virtual hard disk (recommended size: **40-60 GB**)
 
 When done, click **Finish** to complete the setup.
 
 > **Note:**  
 > If you skip or rush through the configuration, your VM may run slowly.  
-> Adjusting resources properly (2 CPU cores and 40–60 GB storage) ensures smooth performance.
+> Adjusting resources properly (2 CPU cores and 60 GB storage) ensures smooth performance.
 
 ---
 
@@ -232,4 +220,8 @@ Follow the on-screen installation steps:
 
 After the restart, Ubuntu 24.04 will load for the first time.  
 You now have a fully functional virtual machine running Ubuntu — ready for your next steps.
+
+
+File Integrity Monitoring (FIM) Demo
+
 
