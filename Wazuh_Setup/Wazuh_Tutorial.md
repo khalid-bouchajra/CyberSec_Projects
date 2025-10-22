@@ -177,3 +177,58 @@ Before booting up:
 3. Confirm it shows your **wireless network adapter name**.
 
 Once verified, your VM is fully configured and ready to start.
+
+### c. Run Your Virtual Machine and Set Up the Operating System
+
+After configuring the virtual machine, you can now start it and begin installing the operating system.
+
+1. In **VirtualBox**, double-click your newly created VM to start it.  
+2. The Ubuntu installation should begin automatically.
+
+---
+
+### Handling Common Errors
+
+If you see an error message such as:
+
+do not worry. This issue sometimes appears when VirtualBox encounters compatibility problems with display or graphics drivers.  
+Wait a moment to see if the installation continues.  
+
+If the screen remains black even though the system appears to start (for example, you hear the Ubuntu startup sound), follow these steps to fix it.
+
+---
+
+### Fixing the Black Screen Issue
+
+1. Power off the VM:  
+   - Go to **Machine → Stop → Power Off**.  
+2. Select your VM and open **Settings → Display**.  
+3. Under **Graphics Controller**, select either **VMSVGA** or **VBoxSVGA**.  
+4. (Optional) Increase the **Video Memory** value for better display performance.  
+   Leave some memory available for your host system.  
+5. Click **OK**, then start the VM again.
+
+After applying these changes, Ubuntu should start correctly and display the installation screen.
+
+---
+
+Once Ubuntu is visible and running, you can proceed with the installation process inside the virtual machine.
+
+### d. Complete the Ubuntu Installation
+
+Before starting the installation, make sure your laptop is plugged in to prevent any interruptions during the process.
+
+Follow the on-screen installation steps:
+
+1. Choose your **language** and **location**.  
+2. Enter your **computer name**, **username**, and **password**.  
+3. Continue through the installation wizard by clicking **Next** or **Skip** where appropriate.  
+   Take a moment to read each screen before proceeding.  
+4. If the installer prompts you to remove any connected devices, press **Enter** to continue.  
+5. When the installation completes, select **Restart Now** to reboot your virtual machine.
+
+---
+
+After the restart, Ubuntu 24.04 will load for the first time.  
+You now have a fully functional virtual machine running Ubuntu — ready for your next steps.
+
