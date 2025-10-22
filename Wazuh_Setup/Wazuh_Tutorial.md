@@ -190,6 +190,7 @@ After configuring the virtual machine, you can now start it and begin installing
 ### Handling Common Errors
 
 If you see an error message such as:
+MWGFX seems to be running on an unsupported hypervisor...
 
 do not worry. This issue sometimes appears when VirtualBox encounters compatibility problems with display or graphics drivers.  
 Wait a moment to see if the installation continues.  
