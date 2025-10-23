@@ -289,7 +289,7 @@ Before installing Wazuh, it is helpful to enable copy and paste between your hos
 2. In VirtualBox, select your Ubuntu VM and go to **Settings → General → Advanced**.  
 3. Set **Shared Clipboard** to **Bidirectional**.  
 4. If you changed this setting while the VM was running, reboot it to apply the change:
-   
+
    *reboot*
 
 ---
