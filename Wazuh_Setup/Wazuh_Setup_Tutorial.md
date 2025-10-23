@@ -232,11 +232,11 @@ Before installing the **Wazuh Manager** on your Ubuntu VM and the **Wazuh Agent*
    *ipconfig*
    
 4. Scroll down to **Wireless LAN adapter Wi-Fi** (or whichever adapter you’re using).
-5. Find the line labeled **IPv4 Address** — it should look like 192.168.1.15.
+5. Find the line labeled **IPv4 Address** — it should look like 192.168.1.x.
 
 Note that address; it’s your computer’s IP on the local network.
 
-### b. Check Your Ubuntu VM’s IP (Linux)
+### b. Check Your Ubuntu VM’s IP
 
 1. Open the **Terminal** from **Show Applications** → **Terminal**, or press **Ctrl + Alt + T**.
 2. Type:
@@ -248,15 +248,36 @@ Note that address; it’s your computer’s IP on the local network.
    *sudo apt install net-tools*
 
 5. Look for the adapter named *enp0s3* — that’s usually your main network interface.
-6. Find the line starting with *inet* (for example, inet 192.168.1.41).
+6. Find the line starting with *inet* (for example, inet 192.168.1.x).
 
 That’s your VM’s IP address, save it as well.
 
 Ignore 127.0.0.1, which refers only to the local machine.
 
+### c. Confirm the Connection with a Ping Test
 
+To ensure your host and VM can communicate even more, perform a simple ping test.
 
+### From the Ubuntu VM:
 
+1. Open the **Terminal**.  
+2. Type the following command, replacing the IP with your Windows local machine’s IP address:
+   
+   *ping 192.168.1.x*
+
+3. If you see replies like "64 bytes from 192.168.1.x...", the connection is working.
+4. To stop the ping, press *Ctrl + C*.
+
+### From Windows Host:
+
+1. Open *Command Prompt*.
+2. Type the following, replacing the IP with your VM’s IP address:
+
+   *ping 192.168.1.x*
+
+3. If you receive replies from the VM, the connection is confirmed.
+
+If both ping tests succeed, your local machine and VM are properly connected on the same network and ready for the Wazuh setup.
 
 
 
