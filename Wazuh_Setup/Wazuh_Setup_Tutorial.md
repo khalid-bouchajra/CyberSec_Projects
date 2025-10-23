@@ -218,6 +218,48 @@ Follow the on-screen installation steps:
 After the restart, Ubuntu 24.04 LTS will load for the first time.  
 You now have a fully functional virtual machine running Ubuntu — ready for your next steps.
 
+---
+
+## Step 3: Setting Up Wazuh Server and Agent
+
+Before installing the **Wazuh Manager** on your Ubuntu VM and the **Wazuh Agent** on your local machine, we need to check once more that both systems can communicate over the network.
+
+### a. Check Your Windows Local Machine’s IP
+
+1. Open the **Start Menu**, type **cmd**, and press **Enter** to open the Command Prompt.
+2. Type:
+   
+   *ipconfig*
+   
+4. Scroll down to **Wireless LAN adapter Wi-Fi** (or whichever adapter you’re using).
+5. Find the line labeled **IPv4 Address** — it should look like 192.168.1.15.
+
+Note that address; it’s your computer’s IP on the local network.
+
+### b. Check Your Ubuntu VM’s IP (Linux)
+
+1. Open the **Terminal** from **Show Applications** → **Terminal**, or press **Ctrl + Alt + T**.
+2. Type:
+
+   *ifconfig*
+
+3. If the command is not found, install it with:
+
+*sudo apt install net-tools*
+
+4. Look for the adapter named *enp0s3* — that’s usually your main network interface.
+5. Find the line starting with *inet* (for example, inet 192.168.1.41).
+
+That’s your VM’s IP address, save it as well.
+
+Ignore 127.0.0.1, which refers only to the local machine.
+
+
+
+
+
+
+
 
 File Integrity Monitoring (FIM) Demo
 
