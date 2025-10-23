@@ -220,11 +220,11 @@ You now have a fully functional virtual machine running Ubuntu — ready for you
 
 ---
 
-## Step 3: Setting Up Wazuh Server and Agent
+## Step 4: Setting Up Wazuh Server and Agent
 
 Before installing the **Wazuh Manager** on your Ubuntu VM and the **Wazuh Agent** on your local machine, we need to check once more that both systems can communicate over the network.
 
-### a. Check Your Windows Local Machine’s IP
+### Check Your Windows Local Machine’s IP
 
 1. Open the **Start Menu**, type **cmd**, and press **Enter** to open the Command Prompt.
 2. Type:
@@ -236,7 +236,7 @@ Before installing the **Wazuh Manager** on your Ubuntu VM and the **Wazuh Agent*
 
 Note that address; it’s your computer’s IP on the local network.
 
-### b. Check Your Ubuntu VM’s IP
+### Check Your Ubuntu VM’s IP
 
 1. Open the **Terminal** from **Show Applications** → **Terminal**, or press **Ctrl + Alt + T**.
 2. Type:
@@ -259,7 +259,6 @@ Ignore 127.0.0.1, which refers only to the local machine.
 To ensure your host and VM can communicate even more, perform a simple ping test.
 
 ### From the Ubuntu VM:
-
 1. Open the **Terminal**.  
 2. Type the following command, replacing the IP with your Windows local machine’s IP address:
    
@@ -269,7 +268,6 @@ To ensure your host and VM can communicate even more, perform a simple ping test
 4. To stop the ping, press *Ctrl + C*.
 
 ### From Windows Host:
-
 1. Open *Command Prompt*.
 2. Type the following, replacing the IP with your VM’s IP address:
 
@@ -293,6 +291,37 @@ Before installing Wazuh, it is helpful to enable copy and paste between your hos
    *reboot*
 
 ---
+
+## a. Add the Wazuh GPG Key
+
+Before installing Wazuh, you need to add its GPG key.  
+This key ensures the packages that you're about to download are verified and safe.
+
+Open your terminal and run the following command:
+
+   *curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo gpg --dearmor -o /usr/share/keyrings/wazuh-archive-keyring.gpg*
+
+If you receive an error indicating that *curl* is not installed, install it with:
+
+   *sudo apt install curl*
+   
+## b. Download and Install Wazuh
+
+Next, download and run the Wazuh installation script.
+
+   *curl -sO https://packages.wazuh.com/4.12/wazuh-install.sh && sudo bash ./wazuh-install.sh -a -i*
+   
+Command options:
+
+- -a → Installs all Wazuh components (Manager, Indexer, and Dashboard).
+
+- -i → Runs the installer in interactive mode.
+
+This step may take several minutes to complete.
+When finished, the installer will display your *admin username* and a *generated password* for accessing the Wazuh dashboard.
+
+
+
 
 
 
