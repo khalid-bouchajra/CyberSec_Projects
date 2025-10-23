@@ -311,7 +311,7 @@ Next, download and run the Wazuh installation script.
 
    *curl -sO https://packages.wazuh.com/4.12/wazuh-install.sh && sudo bash ./wazuh-install.sh -a -i*
    
-Command options:
+### Command options:
 
 - -a → Installs all Wazuh components (Manager, Indexer, and Dashboard).
 
@@ -320,6 +320,21 @@ Command options:
 This step may take several minutes to complete.
 When finished, the installer will display your *admin username* and a *generated password* for accessing the Wazuh dashboard.
 
+---
+
+## Save Your Credentials:
+
+To keep your credentials safe, open a text file and save them:
+
+    nano wazuh_credentials.txt
+
+Paste your credentials inside, then press:
+
+*Ctrl + X* → to exit
+
+*Y* → to save changes
+
+*Enter* → to confirm
 
 
 
