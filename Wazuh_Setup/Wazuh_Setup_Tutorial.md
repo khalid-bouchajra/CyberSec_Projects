@@ -376,3 +376,13 @@ ip a
 
 Keep this IP address noted — you’ll need it to connect the Wazuh Agent later.
 
+## D. Access the Wazuh Dashboard
+
+1. Once the installation is complete, open **Firefox** *(or any browser)* on your Ubuntu VM and visit:
+
+https://<your-vm-ip>
+
+2. You may see a warning that says **“Potential Security Risk Ahead.”**  
+Just click on **Advanced → Accept the Risk and Continue** to proceed.
+3. Log in using the **admin credentials** you saved earlier.  
+If everything went well, you should now see the **Wazuh Dashboard** up and running.
