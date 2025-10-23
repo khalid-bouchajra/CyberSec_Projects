@@ -380,7 +380,7 @@ Keep this IP address noted — you’ll need it to connect the Wazuh Agent later
 
 1. Once the installation is complete, open **Firefox** *(or any browser)* on your Ubuntu VM and visit:
 
-[https://<your-vm-ip>](https://<your-vm-ip>
+https://<your-vm-ip>
 
 2. You may see a warning that says **“Potential Security Risk Ahead.”**  
 Just click on **Advanced → Accept the Risk and Continue** to proceed.
