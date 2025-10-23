@@ -329,6 +329,8 @@ Next, download and run the Wazuh installation script.
 curl -sO https://packages.wazuh.com/4.12/wazuh-install.sh && sudo bash ./wazuh-install.sh -a -i
 ```
 
+---
+
 ### Command options:
 
 - -a → Installs all Wazuh components *(Manager, Indexer, and Dashboard)*.
@@ -337,8 +339,6 @@ curl -sO https://packages.wazuh.com/4.12/wazuh-install.sh && sudo bash ./wazuh-i
 
 This step may take several minutes to complete.
 When finished, the installer will display your **admin username** and a **generated password** for accessing the Wazuh dashboard.
-
----
 
 ## Save Your Credentials:
 
@@ -356,6 +356,7 @@ Paste your credentials inside, then press:
 
 **Enter** → to confirm
 
+---
 
 ## C. Check Your Ubuntu VM’s IP Address
 
