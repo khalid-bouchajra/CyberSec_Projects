@@ -279,6 +279,22 @@ To ensure your host and VM can communicate even more, perform a simple ping test
 
 If both ping tests succeed, your local machine and VM are properly connected on the same network and ready for the Wazuh setup.
 
+---
+
+## Enable Copy and Paste
+
+Before installing Wazuh, it is helpful to enable copy and paste between your host machine and the Ubuntu VM.
+
+1. Make sure the VM is powered off.  
+2. In VirtualBox, select your Ubuntu VM and go to **Settings → General → Advanced**.  
+3. Set **Shared Clipboard** to **Bidirectional**.  
+4. If you changed this setting while the VM was running, reboot it to apply the change:
+   
+   *reboot*
+
+---
+
+
 
 
 
