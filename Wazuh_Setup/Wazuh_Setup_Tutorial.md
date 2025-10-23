@@ -142,9 +142,9 @@ When done, click **Finish** to complete the setup.
 
 ---
 
-#### Expanding Storage (Optional)
+#### Expanding Storage (Optional)!
 
-If your VM’s disk size is too small (e.g., 25 GB), you can increase it:
+If your VM only has the default 25 GB disk, don’t worry — you can expand it anytime.
 
 1. Open **Settings → Storage**.  
 2. Under **Controller: SATA**, select the `.vdi` file (your virtual disk).  
@@ -166,6 +166,8 @@ Before booting up:
 
 Once verified, your VM is fully configured and ready to start.
 
+---
+
 ### c. Run Your Virtual Machine and Set Up the Operating System
 
 After configuring the virtual machine, you can now start it and begin installing the operating system.
@@ -175,17 +177,15 @@ After configuring the virtual machine, you can now start it and begin installing
 
 ---
 
-### Handling Common Errors
+### Handling Common Errors!
 
 If you see an error message such as:
-MWGFX seems to be running on an unsupported hypervisor...
+"MWGFX seems to be running on an unsupported hypervisor..."
 
-do not worry. This issue sometimes appears when VirtualBox encounters compatibility problems with display or graphics drivers.  
+do not worry. This issue sometimes appears when VirtualBox encounters compatibility problems with graphics drivers.  
 Wait a moment to see if the installation continues.  
 
-If the screen remains black even though the system appears to start (for example, you hear the Ubuntu startup sound), follow these steps to fix it.
-
----
+If the screen stays black but you can hear Ubuntu starting up, follow these steps to fix it.
 
 ### Fixing the Black Screen Issue
 
@@ -193,8 +193,7 @@ If the screen remains black even though the system appears to start (for example
    - Go to **Machine → Stop → Power Off**.  
 2. Select your VM and open **Settings → Display**.  
 3. Under **Graphics Controller**, select either **VMSVGA** or **VBoxSVGA**.  
-4. (Optional) Increase the **Video Memory** value for better display performance.  
-   Leave some memory available for your host system.  
+4. (Optional) Increase **Video Memory** for smoother display, but avoid maxing it out to prevent VM issues.
 5. Click **OK**, then start the VM again.
 
 After applying these changes, Ubuntu should start correctly and display the installation screen.
@@ -205,20 +204,18 @@ Once Ubuntu is visible and running, you can proceed with the installation proces
 
 ### d. Complete the Ubuntu Installation
 
-Before starting the installation, make sure your laptop is plugged in to prevent any interruptions during the process.
+Before starting the installation, plug in your laptop if the battery is low to avoid interruptions during setup.
 
 Follow the on-screen installation steps:
 
 1. Choose your **language** and **location**.  
-2. Enter your **computer name**, **username**, and **password**.  
-3. Continue through the installation wizard by clicking **Next** or **Skip** where appropriate.  
+2. Continue through the installation wizard by clicking **Next** or **Skip** where appropriate.  
    Take a moment to read each screen before proceeding.  
-4. If the installer prompts you to remove any connected devices, press **Enter** to continue.  
+3. Enter your **computer name**, **username**, and **password**.
+4. If the installer prompts you to remove any connected devices, just press **Enter** to continue.  
 5. When the installation completes, select **Restart Now** to reboot your virtual machine.
 
----
-
-After the restart, Ubuntu 24.04 will load for the first time.  
+After the restart, Ubuntu 24.04 LTS will load for the first time.  
 You now have a fully functional virtual machine running Ubuntu — ready for your next steps.
 
 
