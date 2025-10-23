@@ -245,10 +245,10 @@ Note that address; it’s your computer’s IP on the local network.
 
 3. If the command is not found, install it with:
 
-*sudo apt install net-tools*
+   *sudo apt install net-tools*
 
-4. Look for the adapter named *enp0s3* — that’s usually your main network interface.
-5. Find the line starting with *inet* (for example, inet 192.168.1.41).
+5. Look for the adapter named *enp0s3* — that’s usually your main network interface.
+6. Find the line starting with *inet* (for example, inet 192.168.1.41).
 
 That’s your VM’s IP address, save it as well.
 
