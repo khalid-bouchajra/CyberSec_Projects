@@ -83,7 +83,7 @@ Once both are ready, proceed to the next step to begin creating your virtual mac
 
 ## Step 3: Set Up the Virtual Machine
 
-### a. Fix the Network First
+### A. Fix the Network First
 
 This step is crucial to ensure your virtual machine (VM) connects properly to your local network.
 
@@ -106,7 +106,7 @@ There are several ways to check it:
 - Open **System Information → Components → Network → Adapter**  
 - Or open **Device Manager**, then expand **Network adapters** to see the list
 
-### b. Build Your Virtual Machine
+### B. Build Your Virtual Machine
 
 Now that your network is ready, it’s time to create your virtual machine.
 
@@ -168,7 +168,7 @@ Once verified, your VM is fully configured and ready to start.
 
 ---
 
-### c. Run Your Virtual Machine and Set Up the Operating System
+### C. Run Your Virtual Machine and Set Up the Operating System
 
 After configuring the virtual machine, you can now start it and begin installing the operating system.
 
@@ -202,7 +202,7 @@ After applying these changes, Ubuntu should start correctly and display the inst
 
 Once Ubuntu is visible and running, you can proceed with the installation process inside the virtual machine.
 
-### d. Complete the Ubuntu Installation
+### D. Complete the Ubuntu Installation
 
 Before starting the installation, plug in your laptop if the battery is low to avoid interruptions during setup.
 
@@ -228,8 +228,10 @@ Before installing the **Wazuh Manager** on your Ubuntu VM and the **Wazuh Agent*
 
 1. Open the **Start Menu**, type **cmd**, and press **Enter** to open the Command Prompt.
 2. Type:
-   
-       ipconfig
+
+```bash
+ipconfig
+```
    
 4. Scroll down to **Wireless LAN adapter Wi-Fi** (or whichever adapter you’re using).
 5. Find the line labeled **IPv4 Address** — it should look like 192.168.1.x.
@@ -241,11 +243,15 @@ Note that address; it’s your computer’s IP on the local network.
 1. Open the **Terminal** from **Show Applications** → **Terminal**, or press **Ctrl + Alt + T**.
 2. Type:
 
-       ifconfig
+```bash
+ifconfig
+```
 
 3. If the command is not found, install it with:
 
-       sudo apt install net-tools
+```bash
+sudo apt install net-tools
+```
 
 5. Look for the adapter named *enp0s3* — that’s usually your main network interface.
 6. Find the line starting with *inet* (for example, inet 192.168.1.x).
@@ -254,15 +260,17 @@ That’s your VM’s IP address, save it as well.
 
 Ignore 127.0.0.1, which refers only to the local machine.
 
-### c. Confirm the Connection with a Ping Test
+### C. Confirm the Connection with a Ping Test
 
 To ensure your host and VM can communicate even more, perform a simple ping test.
 
 ### From the Ubuntu VM:
 1. Open the **Terminal**.  
 2. Type the following command, replacing the IP with your Windows local machine’s IP address:
-   
-       ping 192.168.1.x
+
+```bash   
+ping 192.168.1.x
+```
 
 3. If you see replies like "64 bytes from 192.168.1.x...", the connection is working.
 4. To stop the ping, press *Ctrl + C*.
@@ -271,7 +279,9 @@ To ensure your host and VM can communicate even more, perform a simple ping test
 1. Open *Command Prompt*.
 2. Type the following, replacing the IP with your VM’s IP address:
 
-       ping 192.168.1.x
+```bash
+ ping 192.168.1.x
+```
 
 3. If you receive replies from the VM, the connection is confirmed.
 
@@ -286,34 +296,42 @@ Before installing Wazuh, it is helpful to enable copy and paste between your hos
 1. Make sure the VM is powered off.  
 2. In VirtualBox, select your Ubuntu VM and go to **Settings → General → Advanced**.  
 3. Set **Shared Clipboard** to **Bidirectional**.  
-4. If you changed this setting while the VM was running, reboot it to apply the change:   
+4. If you changed this setting while the VM was running, reboot it to apply the change:
+ 
+```bash
+reboot
+```
 
-       reboot
-   
 ---
 
-## a. Add the Wazuh GPG Key
+## A. Add the Wazuh GPG Key
 
 Before installing Wazuh, you need to add its GPG key.  
 This key ensures the packages that you're about to download are verified and safe.
 
 Open your terminal and run the following command:
 
-    curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo gpg --dearmor -o /usr/share/keyrings/wazuh-archive-keyring.gpg
+```bash
+curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo gpg --dearmor -o /usr/share/keyrings/wazuh-archive-keyring.gpg
+```
 
 If you receive an error indicating that **curl** is not installed, install it with:
 
-    sudo apt install curl
-   
-## b. Download and Install Wazuh
+```bash
+sudo apt install curl
+```
+
+## B. Download and Install Wazuh
 
 Next, download and run the Wazuh installation script.
 
-    curl -sO https://packages.wazuh.com/4.12/wazuh-install.sh && sudo bash ./wazuh-install.sh -a -i
-   
+```bash
+curl -sO https://packages.wazuh.com/4.12/wazuh-install.sh && sudo bash ./wazuh-install.sh -a -i
+```
+
 ### Command options:
 
-- -a → Installs all Wazuh components (Manager, Indexer, and Dashboard).
+- -a → Installs all Wazuh components *(Manager, Indexer, and Dashboard)*.
 
 - -i → Runs the installer in interactive mode.
 
@@ -326,22 +344,34 @@ When finished, the installer will display your **admin username** and a **genera
 
 To keep your credentials safe, open a text file and save them:
 
-    nano wazuh_credentials.txt
+```bash
+nano wazuh_credentials.txt
+```
 
 Paste your credentials inside, then press:
 
-**Ctrl + X* → to exit
+**Ctrl + X** → to exit
 
 **Y** → to save changes
 
 **Enter** → to confirm
 
 
+## C. Check Your Ubuntu VM’s IP Address
 
+Before continuing, verify your Ubuntu VM’s current IP address.
 
+You can use either of the following commands:
 
+```bash
+ifconfig
+```
 
+or
 
-File Integrity Monitoring (FIM) Demo
+```bash
+ip a
+```
 
+Keep this IP address noted — you’ll need it to connect the Wazuh Agent later.
 
